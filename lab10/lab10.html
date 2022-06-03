@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+ <style>
+	body 
+	{
+		margin: 0;
+	}
+
+	canvas 
+	{
+    width: 100%;
+    height: 100%;
+	}
+</style> 
+<script src="build/three.js"></script>
+</head>
+<body>
+<script>
+let canvas = document.getElementById("glcanvas");
+
+const scene = new THREE.Scene({color: 0xfff});
+
+const camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 1, 1000);
+
+const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
+
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+document.body.appendChild(renderer.domElement);
+
+const light = new THREE.PointLight( 0xffffff, 1, 300 );
+light.position.set(-3, -2, 0.5);
+camera.add(light);
+scene.add(camera);
+
+const material = new THREE.MeshPhongMaterial(
+    {
+        color: 0x1a1716, 
+    });
+
+let black_quenn = new THREE.Group();
+
+const baseGeometry = new THREE.CylinderGeometry(0.4, 0.4, 0.1,100);
+
+const base = new THREE.Mesh(baseGeometry, material);
+black_quenn.add(base);
+base.position.y = 0.2;
+
+const quennGeometry_1 = new THREE.CylinderGeometry(0.8,0.8, 0.1, 100);
+const quennPart_1 = new THREE.Mesh(quennGeometry_1, material);
+quennPart_1.position.y=0.3;
+black_quenn.add(quennPart_1);
+
+const quennGeometry_2 = new THREE.CylinderGeometry(0.45, 0.7, 0.8, 100);
+const quennPart_2 = new THREE.Mesh(quennGeometry_2, material);
+quennPart_2.position.y=0.75; 	
+black_quenn.add(quennPart_2);
+
+const quennGeometry_3 = new THREE.CylinderGeometry(0.55, 0.55, 0.3, 100);
+const quennPart_3 = new THREE.Mesh(quennGeometry_3, material);
+quennPart_3.position.y=1.29; 
+black_quenn.add(quennPart_3);
+
+const quennGeometry_4 = new THREE.CylinderGeometry(0.6, 0.5, 0.7, 100);
+const quennPart_4 = new THREE.Mesh(quennGeometry_4, material); 
+quennPart_4.position.y=1.79;
+black_quenn.add(quennPart_4);
+
+const quennGeometry_5 = new THREE.CylinderGeometry(0.75, 0.75, 0.1, 100);
+const quennPart_5 = new THREE.Mesh(quennGeometry_5, material);
+quennPart_5.position.y=2.1;
+black_quenn.add(quennPart_5); 
+
+const quennGeometry_6= new THREE.CylinderGeometry(0.8, 0.8, 0.2, 100);
+const quennPart_6 = new THREE.Mesh(quennGeometry_6, material); 
+black_quenn.add(quennPart_6);
+quennPart_6.position.y=2.25;	
+
+const quennGeometry_7= new THREE.CylinderGeometry(0.8, 0.5, 0.4, 100);
+const quennPart_7 = new THREE.Mesh(quennGeometry_7, material); 
+black_quenn.add(quennPart_7);
+quennPart_7.position.y=2.50;	
+black_quenn.position.set(0,-3,1);
+
+const quennGeometry_8= new THREE.CylinderGeometry(0.8, 0.8, 0.1, 100);
+const quennPart_8 = new THREE.Mesh(quennGeometry_8, material); 
+black_quenn.add(quennPart_8);
+quennPart_8.position.y=2.80;	
+black_quenn.position.set(0,-3,1);
+
+const quennGeometry_9= new THREE.CylinderGeometry(0.4, 0.8, 0.3, 100);
+const quennPart_9 = new THREE.Mesh(quennGeometry_9, material); 
+black_quenn.add(quennPart_9);
+quennPart_9.position.y=2.95;	
+black_quenn.position.set(0,-3,1);
+
+const quennGeometry_10= new THREE.CylinderGeometry(0.2, 0.2, 0.2, 100);
+const quennPart_10 = new THREE.Mesh(quennGeometry_10, material); 
+black_quenn.add(quennPart_10);
+quennPart_10.position.y=3.2;	
+black_quenn.position.set(0,-3,1);
+
+scene.add(black_quenn);
+renderer.render(scene, camera);
+
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+
+camera.position.z = 4.5;
+
+animate();
+
+</script>
+</body>
+</html>
